@@ -34,9 +34,10 @@ class MealDetailScreen extends StatelessWidget {
         DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
 
     return Scaffold(
-        appBar: AppBar(title: Text("${selectedMeal.title}")),
-        body: SingleChildScrollView(
-          child: Column(children: [
+      appBar: AppBar(title: Text("${selectedMeal.title}")),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
             Container(
                 height: 300,
                 width: double.infinity,
@@ -66,7 +67,15 @@ class MealDetailScreen extends StatelessWidget {
               ),
               itemCount: selectedMeal.steps.length,
             ))
-          ]),
-        ));
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
+      ),
+    );
   }
 }
